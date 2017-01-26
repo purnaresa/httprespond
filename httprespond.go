@@ -26,7 +26,7 @@ type Pagination struct {
 	Next  string `json:"next,omitempty"`
 }
 
-func Success(data interface{}, meta interface{}, included interface{}, pagination Pagination, w http.ResponseWriter, r *http.Request) {
+func Success(data interface{}, meta interface{}, included interface{}, pagination Pagination, status int, w http.ResponseWriter, r *http.Request) {
 	response := Response{
 		Data:     data,
 		Meta:     meta,
@@ -37,6 +37,6 @@ func Success(data interface{}, meta interface{}, included interface{}, paginatio
 		},
 	}
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
+	w.WriteHeader(status)
 	json.NewEncoder(w).Encode(response)
 }
