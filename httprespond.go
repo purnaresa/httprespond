@@ -16,7 +16,7 @@ type Response struct {
 type Links struct {
 	Self       string      `json:"self,omitempty"`
 	Related    interface{} `json:"related,omitempty"`
-	Pagination Pagination  `json:"pagination,omitempty"`
+	Pagination *Pagination `json:"pagination,omitempty"`
 }
 
 type Pagination struct {
@@ -26,7 +26,7 @@ type Pagination struct {
 	Next  string `json:"next,omitempty"`
 }
 
-func Success(data interface{}, meta interface{}, included interface{}, pagination Pagination, status int, w http.ResponseWriter, r *http.Request) {
+func Success(data interface{}, meta interface{}, included interface{}, pagination *Pagination, status int, w http.ResponseWriter, r *http.Request) {
 	response := Response{
 		Data:     data,
 		Meta:     meta,
