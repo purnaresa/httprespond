@@ -15,15 +15,17 @@ type Response struct {
 
 type Links struct {
 	Self       string      `json:"self,omitempty"`
-	Related    interface{} `json:"related,omitempty"`
+	Related    string      `json:"related,omitempty"`
+	First      string      `json:"first,omitempty"`
+	Last       string      `json:"last,omitempty"`
+	Prev       string      `json:"prev,omitempty"`
+	Next       string      `json:"next,omitempty"`
 	Pagination *Pagination `json:"pagination,omitempty"`
 }
 
 type Pagination struct {
-	First string `json:"first,omitempty"`
-	Last  string `json:"last,omitempty"`
-	Prev  string `json:"prev,omitempty"`
-	Next  string `json:"next,omitempty"`
+	HasNextPage bool `json:"has_next_page,omitempty"`
+	HasPrevPage bool `json:"has_prev_page,omitempty"`
 }
 
 func Success(data interface{}, meta interface{}, included interface{}, pagination *Pagination, status int, w http.ResponseWriter, r *http.Request) {
