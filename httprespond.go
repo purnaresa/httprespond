@@ -24,8 +24,8 @@ type Links struct {
 }
 
 type Pagination struct {
-	HasNextPage bool `json:"has_next_page,omitempty"`
-	HasPrevPage bool `json:"has_prev_page,omitempty"`
+	HasNextPage bool `json:"has_next_page"`
+	HasPrevPage bool `json:"has_prev_page"`
 }
 
 func Success(data interface{}, meta interface{}, included interface{}, pagination *Pagination, status int, w http.ResponseWriter, r *http.Request) {
